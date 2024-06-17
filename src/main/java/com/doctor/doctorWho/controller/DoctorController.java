@@ -2,28 +2,28 @@ package com.doctor.doctorWho.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class DoctorController {
 
-    @GetMapping("/doctor/1")
+    @GetMapping("/doctor/{id}")
     @ResponseBody
-    public String getFirstDoctor() {
-        return "William Hartnell";
-    }
+    public String getDoctor(@PathVariable int doctorId) {
+        switch (doctorId) {
+            case 1:
+                return "William Hartnell";
+            case 10:
+                return "David Tennant";
+            case 13:
+                return "Jodie Whittaker";
 
-    @GetMapping("/doctor/10")
-    @ResponseBody
-    public String getTenDoctor() {
-        return "David Tennant";
-    }
+            default:
+                return "Docteur inconnu";
+        }
 
-    @GetMapping("/doctor/13")
-    @ResponseBody
-    public String getThirteenDoctor() {
-        return "Jodie Whittaker";
     }
 
 }
